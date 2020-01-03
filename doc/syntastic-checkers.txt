@@ -3160,7 +3160,7 @@ by syntastic with messages such as: >
     syntastic: error: checker html/validator returned abnormal status 26
 <
 You can lookup the meaning of these codes in cURL's manual:
-    
+
     http://curl.haxx.se/docs/manpage.html#EXIT
 
 See also: |syntastic-svg-validator|, |syntastic-xhtml-validator|.
@@ -3235,7 +3235,7 @@ by syntastic with messages such as: >
     syntastic: error: checker html/w3 returned abnormal status 26
 <
 You can lookup the meaning of these codes in cURL's manual:
-    
+
     https://curl.haxx.se/docs/manpage.html#EXIT
 
 See also: |syntastic-svg-w3|, |syntastic-xhtml-w3|.
@@ -3666,7 +3666,7 @@ By default the checker calls "JSLint" with these options: >
 <
 This can be changed by setting 'g:syntastic_javascript_jslint_args' in your
 vimrc to your own list of options, for example: >
-    let g:syntastic_javascript_jslint_args = 
+    let g:syntastic_javascript_jslint_args =
         \ "--nomen --regexp --browser --devel --windows --sloppy --vars"
 <
 Setting this variable to the empty string "" is allowed, and instructs
@@ -4138,17 +4138,18 @@ Note~
 A sensible set of options for LUA projects might be something like this: >
     let g:syntastic_check_on_open = 1
     let g:syntastic_lua_checkers = ["luac", "luacheck"]
-    let g:syntastic_lua_luacheck_args = "--no-unused-args" 
+    let g:syntastic_lua_luacheck_args = "--no-unused-args"
 <
 ==============================================================================
 SYNTAX CHECKERS FOR MARKDOWN                     *syntastic-checkers-markdown*
 
 The following checkers are available for Markdown (filetype "markdown"):
 
-    1. Markdown lint tool.......|syntastic-markdown-mdl|
-    2. proselint................|syntastic-markdown-proselint|
-    3. remark-lint..............|syntastic-markdown-remark_lint|
-    4. textlint.................|syntastic-markdown-textlint|
+    1. Markdown lint tool........|syntastic-markdown-mdl|
+    2. Markdown lint tool (node).|syntastic-markdown-markdownlint|
+    3. proselint.................|syntastic-markdown-proselint|
+    4. remark-lint...............|syntastic-markdown-remark_lint|
+    5. textlint..................|syntastic-markdown-textlint|
 
 ------------------------------------------------------------------------------
 1. Markdown lint tool                                 *syntastic-markdown-mdl*
@@ -4171,21 +4172,29 @@ Checker options~
 This checker is initialised using the "makeprgBuild()" function and thus it
 accepts the standard options described at |syntastic-config-makeprg|.
 
-Note~
+------------------------------------------------------------------------------
+2. Markdown lint tool                                 *syntastic-markdown-mdl*
 
-You can also use the "Node.js"-based "markdownlint-cli" as a linter instead
-of "mdl":
+Name:        markdownlint
+Maintainer:  Ken Crowell <oeuftete@gmail.com>
+
+"Markdown lint tool (node)" is a style linter for Markdown files. See the
+project's page at GitHub for details:
 
     https://github.com/igorshubovych/markdownlint-cli
 
-To do that, you have to point 'g:syntastic_markdown_mdl_exec' to
-"markdownlint", and set 'g:syntastic_markdown_mdl_args' to an empty string (or
-to a set of valid "markdownlint-cli" options): >
-    let g:syntastic_markdown_mdl_exec = "markdownlint"
-    let g:syntastic_markdown_mdl_args = ""
+Installation~
+
+Install it with: >
+    npm install -g markdownlint-cli
 <
+Checker options~
+
+This checker is initialised using the "makeprgBuild()" function and thus it
+accepts the standard options described at |syntastic-config-makeprg|.
+
 ------------------------------------------------------------------------------
-2. proselint                                    *syntastic-markdown-proselint*
+3. proselint                                    *syntastic-markdown-proselint*
 
 Name:        proselint
 Maintainer:  LCD 47 <lcd047@gmail.com>
@@ -4206,7 +4215,7 @@ See also: |syntastic-asciidoc-proselint|, |syntastic-help-proselint|,
 |syntastic-text-proselint|, |syntastic-xhtml-proselint|.
 
 ------------------------------------------------------------------------------
-3. remark-lint                                *syntastic-markdown-remark_lint*
+4. remark-lint                                *syntastic-markdown-remark_lint*
 
 Name:        remark_lint
 Maintainer:  Tim Carry <tim@pixelastic.com>
@@ -4228,7 +4237,7 @@ This checker is initialised using the "makeprgBuild()" function and thus it
 accepts the standard options described at |syntastic-config-makeprg|.
 
 ------------------------------------------------------------------------------
-4. textlint                                      *syntastic-markdown-textlint*
+5. textlint                                      *syntastic-markdown-textlint*
 
 Name:        textlint
 Maintainer:  LCD 47 <lcd047@gmail.com>
@@ -4661,14 +4670,14 @@ Default: "."
 Path to Jane Street's "core".
 
                                                  *'g:syntastic_ocaml_camlp4r'*
-Type: boolean                                                                 
+Type: boolean
 Default: 0
 By default, .ml and .mli files are checked with the "camlp4o" preprocessor,
 .mll with "ocamllex", and .mly with "menhir". If your source code requires
 "camlp4r" you can set this variable.
 
                                           *'g:syntastic_ocaml_use_ocamlbuild'*
-Type: boolean                                                                 
+Type: boolean
 Default: 0
 Whether to enable typechecking and syntax extensions. This tells syntastic to
 run "ocamlbuild <name>.inferred.mli". It writes object files to the "_build"
@@ -5144,7 +5153,7 @@ Maintainers: Sylvain Soliman <Sylvain.Soliman+git@gmail.com>
 
 "Flake8" is a wrapper around PyFlakes (https://launchpad.net/pyflakes), pep8
 (https://github.com/jcrocholl/pep8), and Ned Batchelder's McCabe script
-(http://nedbatchelder.com/blog/200803/python_code_complexity_microtool.html). 
+(http://nedbatchelder.com/blog/200803/python_code_complexity_microtool.html).
 See the project's page and the official docs for details:
 
     https://gitlab.com/pycqa/flake8
@@ -5951,14 +5960,14 @@ is to run a version manager such as "rbenv" (http://rbenv.org/) or "rvm"
 conflicts: >
     $ rbenv version
     2.1.3 (set by /usr/local/var/rbenv/version)
-    
+
     $ rubocop --version
     warning: parser/current is loading parser/ruby21, which recognizes
     warning: 2.1.2-compliant syntax, but you are running 2.1.3.
     0.26.1
-    
+
     $ rbenv shell 2.1.2
-    
+
     $ rubocop --version
     0.26.1
 <
@@ -6000,14 +6009,14 @@ is to run a version manager such as "rbenv" (http://rbenv.org/) or "rvm"
 conflicts: >
     $ rbenv version
     2.1.3 (set by /usr/local/var/rbenv/version)
-    
+
     $ ruby-lint --version
     warning: parser/current is loading parser/ruby21, which recognizes
     warning: 2.1.2-compliant syntax, but you are running 2.1.3.
     ruby-lint v2.0.4 on ruby 2.1.3 [i486-linux]
-    
+
     $ rbenv shell 2.1.2
-    
+
     $ ruby-lint --version
     ruby-lint v2.0.4 on ruby 2.1.2 [i486-linux]
 <
@@ -6485,7 +6494,7 @@ The following checkers are available for Solidity (filetype "solidity"):
 ------------------------------------------------------------------------------
 1. solc                                              *syntastic-solidity-solc*
 
-Name:        solc 
+Name:        solc
 Maintainer:  Jacob Cholewa <jacob@cholewa.dk>
 
 "solc" is a compiler for Ethereum's smart-contract language "Solidity"
@@ -6704,13 +6713,13 @@ by syntastic with messages such as: >
     syntastic: error: checker svg/validator returned abnormal status 26
 <
 You can lookup the meaning of these codes in cURL's manual:
-    
+
     http://curl.haxx.se/docs/manpage.html#EXIT
 
 Example~
 >
     let g:syntastic_svg_validator_parser = 'xml'
-    let g:syntastic_svg_validator_schema = 
+    let g:syntastic_svg_validator_schema =
         \ 'http://s.validator.nu/svg-xhtml5-rdf-mathml.rnc ' .
         \ 'http://s.validator.nu/html5/assertions.sch ' .
         \ 'http://c.validator.nu/all/'
@@ -6783,7 +6792,7 @@ by syntastic with messages such as: >
     syntastic: error: checker svg/w3 returned abnormal status 26
 <
 You can lookup the meaning of these codes in cURL's manual:
-    
+
     http://curl.haxx.se/docs/manpage.svg#EXIT
 
 See also: |syntastic-html-w3|, |syntastic-xhtml-w3|.
@@ -7774,13 +7783,13 @@ by syntastic with messages such as: >
     syntastic: error: checker xhtml/validator returned abnormal status 26
 <
 You can lookup the meaning of these codes in cURL's manual:
-    
+
     http://curl.haxx.se/docs/manpage.html#EXIT
 
 Example~
 >
     let g:syntastic_xhtml_validator_parser = 'xmldtd'
-    let g:syntastic_xhtml_validator_schema = 
+    let g:syntastic_xhtml_validator_schema =
         \ 'http://s.validator.nu/xhtml5.rnc ' .
         \ 'http://s.validator.nu/html5/assertions.sch ' .
         \ 'http://c.validator.nu/all/
@@ -7860,7 +7869,7 @@ by syntastic with messages such as: >
     syntastic: error: checker xhtml/w3 returned abnormal status 26
 <
 You can lookup the meaning of these codes in cURL's manual:
-    
+
     https://curl.haxx.se/docs/manpage.xhtml#EXIT
 
 See also: |syntastic-html-w3|, |syntastic-svg-w3|.
