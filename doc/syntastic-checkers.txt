@@ -4133,7 +4133,7 @@ This checker is initialised using the "makeprgBuild()" function and thus it
 accepts the standard options described at |syntastic-config-makeprg|.
 
 ------------------------------------------------------------------------------
-2. Markdown lint tool                                 *syntastic-markdown-mdl*
+2. Markdown lint tool                        *syntastic-markdown-markdownlint*
 
 Name:        markdownlint
 Maintainer:  Ken Crowell <oeuftete@gmail.com>
